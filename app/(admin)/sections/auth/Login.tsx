@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { LoginFormValues, loginSchema } from "../../forms/loginValidation";
 import Input from "@/app/global/components/input";
 import Button from "@/app/global/components/button";
