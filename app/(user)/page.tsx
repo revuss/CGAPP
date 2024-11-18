@@ -18,8 +18,11 @@ const Career = dynamic(() => import("./sections/career/CareerMain"));
 const Contact = dynamic(() => import("./sections/contact/ContactMain"));
 
 export default async function Page() {
-  await userVisit();
-
+  try {
+    await userVisit();
+  } catch (error) {
+    console.error("Error during call:", error);
+  }
   return (
     <div className="overflow-clip">
       <HeroMain />
