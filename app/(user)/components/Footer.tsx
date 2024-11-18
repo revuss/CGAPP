@@ -13,7 +13,7 @@ function Footer() {
               CytoGensis
             </span>
           </Link>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-primary sm:mb-0">
+          <ul className="flex flex-wrap items-center mb-6 text-xs font-medium text-gray-400 sm:mb-0">
             <li>
               <Link href="/about" className="hover:underline me-4 md:me-6">
                 About
