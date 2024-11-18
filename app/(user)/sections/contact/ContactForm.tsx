@@ -12,7 +12,6 @@ function ContactForm() {
     register,
     handleSubmit,
     setValue,
-    reset,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),

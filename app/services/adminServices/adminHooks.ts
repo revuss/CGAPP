@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from "@tanstack/react-query";
 import { loginUserAPI, registerUserAPI } from "./adminService";
 import { AxiosError } from "axios";

@@ -23,7 +23,6 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
-  const router = useRouter();
   const { mutate } = useLogin();
 
   const onSubmit = (data: LoginFormValues) => {
