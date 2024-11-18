@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { LoginFormValues, loginSchema } from "../../forms/loginValidation";
 import Input from "@/app/global/components/input";
 import Button from "@/app/global/components/button";
+import { useLogin } from "@/app/services/adminServices/adminHooks";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -23,9 +24,18 @@ const Login = () => {
   });
 
   const router = useRouter();
+  const { mutate } = useLogin();
 
   const onSubmit = (data: LoginFormValues) => {
-    console.log(data);
+    mutate(data, {
+      onSuccess: (res) => {
+        if (res?.statusCode === "SUCCESS") {
+          toast.success(res?.message);
+        } else {
+          toast.error(res?.error);
+        }
+      },
+    });
   };
 
   return (

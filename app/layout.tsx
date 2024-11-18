@@ -4,6 +4,7 @@ import "./globals.css";
 import Lenis from "lenis";
 import { useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 const fontType = Montserrat({ subsets: ["cyrillic", "latin"] });
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${fontType.className} antialiased `}>
         <QueryClientProvider client={queryClient}>
+          <Toaster position="top-right" richColors />
           {children}
         </QueryClientProvider>
       </body>

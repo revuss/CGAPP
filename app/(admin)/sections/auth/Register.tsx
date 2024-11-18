@@ -15,6 +15,7 @@ import {
   handleNumericInput,
 } from "@/app/global/util/validations";
 import Button from "@/app/global/components/button";
+import { useRegister } from "@/app/services/adminServices/adminHooks";
 
 const Register = () => {
   const {
@@ -30,7 +31,22 @@ const Register = () => {
 
   const router = useRouter();
 
-  const onSubmit = (data: RegisterFormValues) => {};
+  const { mutate } = useRegister();
+
+  const onSubmit = (data: RegisterFormValues) => {
+    mutate(data, {
+      onSuccess: (res) => {
+        if (res?.statusCode === "SUCCESS") {
+          toast.success(res?.message);
+          setTimeout(() => {
+            router.push("/login");
+          }, 500);
+        } else {
+          toast.error(res?.error);
+        }
+      },
+    });
+  };
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
