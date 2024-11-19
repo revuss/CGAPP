@@ -12,7 +12,7 @@ function handleError(err: unknown) {
 }
 
 function getBaseUrl() {
-  return "http://localhost:3000/api";
+  return "https://cytogenesis-beta.vercel.app/api";
 }
 
 export async function getRequest(api: string, queryString: string = "") {
