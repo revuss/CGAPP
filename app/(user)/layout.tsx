@@ -1,10 +1,12 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
+import { useVisit } from "../services/userServices/userHooks";
 
 const Navbar = dynamic(() => import("./components/Navbar"));
 const Footer = dynamic(() => import("./components/Footer"));
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const { mutate: triggerVisit } = useVisit();
   useEffect(() => {
     const disableRightClick = (e: MouseEvent) => {
       e.preventDefault();
@@ -30,6 +32,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       document.removeEventListener("keydown", disableKeyCombination);
     };
   }, []);
+
+  useEffect(() => {
+    const visitAlreadyTriggered = sessionStorage.getItem("hasVisited");
+
+    if (!visitAlreadyTriggered) {
+      triggerVisit();
+      sessionStorage.setItem("hasVisited", "true");
+    }
+  }, [triggerVisit]);
   return (
     <section className="select-none bg-gray-50">
       <Navbar />

@@ -11,8 +11,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "skipped" }, { status: 200 });
     }
 
-    const ipResponse = await axios.get("https://api.ipify.org?format=json");
-    const ipAddress = ipResponse.data.ip;
+    // const ipResponse = await axios.get("https://api.ipify.org?format=json");
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const ipAddress: any =
+      req.headers.get("x-forwarded-for")?.split(",")[0] ||
+      req.headers.get("remote-addr");
 
     const locationResponse = await axios.get(
       `https://ipapi.co/${ipAddress}/json/`
