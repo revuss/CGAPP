@@ -1,4 +1,4 @@
-import { postRequest } from "../globalServices";
+import { getRequest, postRequest } from "../globalServices";
 
 interface RegisterInterface {
   name: string;
@@ -18,4 +18,8 @@ export function registerUserAPI(data: RegisterInterface) {
 
 export function loginUserAPI(data: LoginInterface) {
   return postRequest("/login", data);
+}
+
+export function logoutUserAPI() {
+  return getRequest("/logout", "");
 }

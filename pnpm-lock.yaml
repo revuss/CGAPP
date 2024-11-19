@@ -23,6 +23,9 @@ importers:
       framer-motion:
         specifier: ^11.11.17
         version: 11.11.17(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      jose:
+        specifier: ^5.9.6
+        version: 5.9.6
       lenis:
         specifier: ^1.1.16
         version: 1.1.16(react@18.3.1)
@@ -1207,6 +1210,9 @@ packages:
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
+
+  jose@5.9.6:
+    resolution: {integrity: sha512-AMlnetc9+CV9asI19zHmrgS/WYsWUwCn2R7RzlbJWD7F9eWYUTGyBmU9o6PxngtLGOiDGPRu+Uc4fhKzbpteZQ==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -3098,6 +3104,8 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.6: {}
+
+  jose@5.9.6: {}
 
   js-tokens@4.0.0: {}
 

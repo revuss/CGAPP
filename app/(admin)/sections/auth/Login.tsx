@@ -9,6 +9,7 @@ import { LoginFormValues, loginSchema } from "../../forms/loginValidation";
 import Input from "@/app/global/components/input";
 import Button from "@/app/global/components/button";
 import { useLogin } from "@/app/services/adminServices/adminHooks";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -22,6 +23,7 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+  const router = useRouter();
   const { mutate } = useLogin();
 
   const onSubmit = (data: LoginFormValues) => {
@@ -29,6 +31,9 @@ const Login = () => {
       onSuccess: (res) => {
         if (res?.statusCode === "SUCCESS") {
           toast.success(res?.message);
+          setTimeout(() => {
+            router.push("/admin");
+          }, 150);
         } else {
           toast.error(res?.error);
         }
