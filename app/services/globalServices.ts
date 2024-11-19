@@ -12,9 +12,7 @@ function handleError(err: unknown) {
 }
 
 function getBaseUrl() {
-  return (
-    process.env.NEXT_PUBLIC_API_URL || "https://cytogenesis-beta.vercel.app/api"
-  );
+  return "https://cytogenesis-beta.vercel.app/api";
 }
 
 export async function getRequest(api: string, queryString: string = "") {
