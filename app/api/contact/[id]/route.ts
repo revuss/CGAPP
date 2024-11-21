@@ -2,13 +2,18 @@ import { NextResponse } from "next/server";
 import prisma from "@/app/lib/prisma";
 import { Prisma } from "@prisma/client";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params;
-
+export async function DELETE(req: Request) {
   try {
+    const url = new URL(req.url);
+    const id = url.searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json(
+        { statusCode: "FAILED", error: "ID is required in query params" },
+        { status: 400 }
+      );
+    }
+
     const deletedContact = await prisma.contact.delete({
       where: {
         id: parseInt(id, 10),

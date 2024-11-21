@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useMutation } from "@tanstack/react-query";
 import { addCareerAPI, addContactAPI, userVisit } from "./userServices";
 import { AxiosError } from "axios";

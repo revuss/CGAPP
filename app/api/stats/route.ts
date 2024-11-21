@@ -2,6 +2,12 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/lib/prisma";
 import { cookies } from "next/headers";
+import {
+  getCountryVisitors,
+  getMonthlyVisitors,
+  getWeeklyVisitors,
+} from "../util/visitorsQueries";
+import { decodeToken } from "../util/decodeToken";
 
 export async function POST(request: Request) {
   try {
@@ -48,36 +54,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-}
-
-import jwt from "jsonwebtoken";
-import {
-  getCountryVisitors,
-  getMonthlyVisitors,
-  getWeeklyVisitors,
-} from "../util/visitorsQueries";
-
-export async function decodeToken(token: string) {
-  const jwtSecret = process.env.JWT_SECRET;
-  if (!jwtSecret) throw new Error("JWT_SECRET is not defined");
-
-  const decoded = jwt.verify(token, jwtSecret);
-
-  if (typeof decoded !== "object" || !decoded.userId) {
-    throw new Error("Invalid token payload");
-  }
-
-  const user = await prisma.user.findUnique({
-    where: { id: decoded.userId },
-    select: {
-      id: true,
-      name: true,
-      phoneNumber: true,
-      email: true,
-    },
-  });
-
-  if (!user) throw new Error("User not found");
-
-  return user;
 }
