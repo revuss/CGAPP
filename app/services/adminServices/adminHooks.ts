@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMutation } from "@tanstack/react-query";
-import { loginUserAPI, registerUserAPI } from "./adminService";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  deleteVisitorsAPI,
+  loginUserAPI,
+  registerUserAPI,
+} from "./adminService";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -54,4 +58,31 @@ export function useLogin() {
   });
 
   return { mutate, isPending };
+}
+
+export function useDeleteVisitors(fetchDataOptions: any) {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: async (id: number) => {
+      return await deleteVisitorsAPI(id);
+    },
+    onSuccess: (res: any) => {
+      if (res.statusCode === "SUCCESS") {
+        toast.success(res?.message || "Record Deleted");
+        queryClient.invalidateQueries({
+          queryKey: ["visitorsData", fetchDataOptions],
+        });
+      } else {
+        toast.error(res?.error || "An unexpected error occurred");
+      }
+    },
+    onError: (err: any) => {
+      if (err.statusCode === "FAILED") {
+        toast.error(err?.error || "Visitor not found");
+      } else {
+        toast.error(err?.error || "An unexpected error occurred");
+      }
+    },
+  });
+  return { mutate };
 }

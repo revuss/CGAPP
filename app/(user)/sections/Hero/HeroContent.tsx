@@ -13,8 +13,16 @@ function HeroContent() {
   return (
     <div className="col-span-3 px-4 ">
       <SlideFromLeft>
-        <div className="md:text-3xl xl:text-5xl text-center tracking-wide md:text-start text-xl font-bold mb-4">
+        {/* <div className="md:text-3xl xl:text-5xl text-center tracking-wide md:text-start text-xl font-bold mb-4">
           <h1 className="bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent py-2">
+            Trusted Partner in Advanced Wound Care Therapy
+          </h1>
+        </div> */}
+        <div className="md:text-3xl xl:text-5xl text-center tracking-wide md:text-start text-xl font-bold mb-4 relative">
+          <h1 className="absolute inset-0 text-gray-400 opacity-40 py-2 translate-x-1 translate-y-1">
+            Trusted Partner in Advanced Wound Care Therapy
+          </h1>
+          <h1 className="bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent py-2 relative">
             Trusted Partner in Advanced Wound Care Therapy
           </h1>
         </div>

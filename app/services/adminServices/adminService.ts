@@ -1,4 +1,4 @@
-import { getRequest, postRequest } from "../globalServices";
+import { deleteRequest, getRequest, postRequest } from "../globalServices";
 
 interface RegisterInterface {
   name: string;
@@ -22,4 +22,17 @@ export function loginUserAPI(data: LoginInterface) {
 
 export function logoutUserAPI() {
   return getRequest("/logout", "");
+}
+
+export function visitorsAPI(data: {
+  pageSize?: number;
+  pageIndex?: number;
+  sortCol?: string;
+  sortOrder?: string;
+}) {
+  return postRequest("/visitors", data);
+}
+
+export function deleteVisitorsAPI(id: number) {
+  return deleteRequest(`/visitors/${id}`, "");
 }

@@ -6,12 +6,15 @@ import { ContactFormValues, contactSchema } from "../../form/contactValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { handleNumericInput } from "@/app/global/util/validations";
+import { useAddContact } from "@/app/services/userServices/userHooks";
+import { toast } from "sonner";
 
 function ContactForm() {
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -19,17 +22,21 @@ function ContactForm() {
     reValidateMode: "onChange",
   });
 
+  const { mutate } = useAddContact();
+
   const onSubmit = (data: ContactFormValues) => {
-    // mutate(data, {
-    //   onSuccess: (res) => {
-    //     if (res.statusCode === "SUCCESS") {
-    //       toast.success(
-    //         res.message || "Message received! We’ll connect with you shortly."
-    //       );
-    //       reset();
-    //     }
-    //   },
-    // });
+    mutate(data, {
+      onSuccess: (res) => {
+        if (res.statusCode === "SUCCESS") {
+          toast.success(
+            res.message || "Message received! We’ll connect with you shortly."
+          );
+          reset();
+        } else {
+          toast.info(res?.message);
+        }
+      },
+    });
     console.log(data);
   };
 

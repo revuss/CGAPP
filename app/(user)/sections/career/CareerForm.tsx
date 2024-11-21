@@ -5,6 +5,8 @@ import { CareerFormValues, careerSchema } from "../../form/careerValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { handleNumericInput } from "@/app/global/util/validations";
+import { useAddCareers } from "@/app/services/userServices/userHooks";
+import { toast } from "sonner";
 
 function CareerForm() {
   const {
@@ -18,15 +20,19 @@ function CareerForm() {
     reValidateMode: "onChange",
   });
 
+  const { mutate } = useAddCareers();
+
   const onSubmit = (data: CareerFormValues) => {
     console.log(data);
-    // mutate(data, {
-    //   onSuccess: (res) => {
-    //     if (res?.statusCode === "SUCCESS") {
-    //       toast.success(res?.message || "Your career form has been submitted!");
-    //     }
-    //   },
-    // });
+    mutate(data, {
+      onSuccess: (res) => {
+        if (res?.statusCode === "SUCCESS") {
+          toast.success(res?.message || "Your career form has been submitted!");
+        } else {
+          toast.info(res?.message);
+        }
+      },
+    });
   };
 
   return (

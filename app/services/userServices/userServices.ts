@@ -7,3 +7,20 @@ export async function userVisit() {
   }
   return response;
 }
+
+export function addContactAPI(data: {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  message: string;
+}) {
+  return postRequest("/contact/addContact", data);
+}
+
+export function addCareerAPI(data: {
+  name: string;
+  email: string;
+  phoneNumber: string;
+}) {
+  return postRequest("/career/addcareer", data);
+}
