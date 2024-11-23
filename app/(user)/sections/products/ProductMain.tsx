@@ -96,7 +96,6 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
               viewport={{ once: true }}
               variants={cardVariants}
             >
-              {/* Decorative Background */}
               <motion.div
                 className="absolute bottom-0 left-0 w-full h-full pointer-events-none"
                 initial={{ opacity: 0 }}
@@ -128,7 +127,6 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
                 </svg>
               </motion.div>
 
-              {/* Product Image */}
               <div className="relative w-full h-[65%] flex items-center justify-center overflow-hidden">
                 <motion.div
                   className="w-full h-full"
@@ -145,9 +143,7 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
                 </motion.div>
               </div>
 
-              {/* Product Info */}
               <div className="px-6 flex-1 flex flex-col h-[35%] space-y-1 mt-4 mb-5">
-                {/* Tagline */}
                 <motion.span
                   className="text-xs text-white opacity-75 truncate"
                   initial={{ opacity: 0 }}
@@ -157,7 +153,6 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
                   {product.tagLine}
                 </motion.span>
 
-                {/* Product Name */}
                 <motion.h3
                   className="font-extrabold text-md truncate bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent"
                   initial={{ opacity: 0 }}
@@ -167,7 +162,6 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
                   {product.productName}
                 </motion.h3>
 
-                {/* Description */}
                 <motion.p
                   className="text-primary font-medium text-sm opacity-80 line-clamp-3"
                   initial={{ opacity: 0 }}
