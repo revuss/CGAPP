@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useMutation } from "@tanstack/react-query";
-import { addCareerAPI, addContactAPI, userVisit } from "./userServices";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import {
+  addCareerAPI,
+  addContactAPI,
+  getallProductsAPI,
+  userVisit,
+} from "./userServices";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
@@ -54,4 +59,17 @@ export function useAddCareers() {
   });
 
   return { mutate };
+}
+
+export function useGetAllProducts() {
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => await getallProductsAPI(),
+  });
+
+  if (isError && error) {
+    toast.info((error as any)?.message || "An unexpected error occurred");
+  }
+
+  return { data, isLoading, isError, error, refetch };
 }

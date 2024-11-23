@@ -1,4 +1,4 @@
-import { postRequest } from "../globalServices";
+import { getRequest, postRequest } from "../globalServices";
 
 export async function userVisit() {
   const response = await postRequest("/visit", "");
@@ -23,4 +23,8 @@ export function addCareerAPI(data: {
   phoneNumber: string;
 }) {
   return postRequest("/career/addcareer", data);
+}
+
+export function getallProductsAPI() {
+  return getRequest("/products/all", "");
 }
