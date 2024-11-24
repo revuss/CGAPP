@@ -50,7 +50,6 @@ const allMonths = [
 ];
 
 export async function getMonthlyVisitors() {
-  // Fetch raw data with month extracted from `createdAt`
   const visitors = await prisma.$queryRawUnsafe<
     {
       month: number;
@@ -62,7 +61,6 @@ export async function getMonthlyVisitors() {
     GROUP BY month
   `);
 
-  // Map to include all months with zero visitors if missing
   const result = allMonths.map((monthName, index) => {
     const match = visitors.find((v) => v.month === index + 1);
     return {

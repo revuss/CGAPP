@@ -33,17 +33,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const visitAlreadyTriggered = sessionStorage.getItem("hasVisited");
-
-  //   if (!visitAlreadyTriggered) {
-  //     const ipResponse = await fetch("https://api.ipify.org?format=json");
-  //     const { ip } = await ipResponse.json();
-  //     triggerVisit({ ipAddress: ip });
-  //     sessionStorage.setItem("hasVisited", "true");
-  //   }
-  // }, [triggerVisit]);
-
   useEffect(() => {
     const fetchIpAndTriggerVisit = async () => {
       try {
