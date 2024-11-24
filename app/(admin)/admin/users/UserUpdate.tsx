@@ -24,7 +24,6 @@ const UserUpdate = ({ closeMe, userDetails }: any) => {
       authorized: data.authorized,
       failedPasswords: parseInt(data.failedPasswords, 10) || 0,
     };
-    console.log(sendData);
     mutate(sendData);
     setTimeout(() => {
       closeMe();

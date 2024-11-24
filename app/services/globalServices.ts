@@ -4,7 +4,7 @@ function handleError(err: unknown) {
   if (axios.isAxiosError(err) && err.response) {
     const errorData = err.response.data;
     console.error("API Error:", errorData);
-    return errorData;
+    return errorData?.message || err.message || "Unknown error";
   } else {
     console.error("Unexpected Error:", (err as Error).message || err);
     throw (err as Error).message || "An unexpected error occurred";
@@ -36,11 +36,17 @@ export async function postRequest(api: string, data: unknown) {
     });
     return response.data;
   } catch (err: unknown) {
-    const errorDetails = handleError(err);
-    throw errorDetails;
+    if (axios.isAxiosError(err)) {
+      console.error("API Error Response:", err.response?.data || err.message);
+      throw new Error(
+        err.response?.data?.message || "Unknown API error occurred"
+      );
+    } else {
+      console.error("Unexpected Error:", err);
+      throw new Error("An unexpected error occurred");
+    }
   }
 }
-
 export async function deleteRequest(api: string, data: unknown = {}) {
   try {
     const response = await axios.delete(`${getBaseUrl()}${api}`, {

@@ -1,28 +1,37 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
 import Button from "@/app/global/components/button";
-import { useGetAllProducts } from "@/app/services/userServices/userHooks";
-import { motion } from "framer-motion";
+import { getallProductsAPI } from "@/app/services/userServices/userServices";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 interface ProductMainProps {
   limit?: number;
 }
 
-const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
-  const { data, isLoading, error } = useGetAllProducts();
-  const router = useRouter();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Failed to load products</div>;
+const ProductMain: React.FC<ProductMainProps> = async ({ limit }) => {
+  let data: any;
+  try {
+    const response = await getallProductsAPI();
+    if (Array.isArray(response)) {
+      data = response;
+    }
+  } catch (err: any) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-red-500">
+          Error: {err.message || "Failed to load data"}
+        </p>
+      </div>
+    );
+  }
+  if (data.length === 0) {
+    <div className="flex justify-center items-center h-screen">
+      <p className="text-gray-500">No data is present</p>
+    </div>;
+  }
 
   const displayedData = limit ? data?.slice(0, limit) : data;
-
-  const cardVariants = {
-    initial: { opacity: 0, y: 30 },
-    hover: { scale: 1.05, transition: { duration: 0.3 } },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 } },
-  };
 
   return (
     <>
@@ -31,7 +40,7 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
           Discover Precision Healing with Our Top Wound Care Products.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-[95%] gap-8 p-6 mx-auto">
-          {/* {displayedData?.map((product: any) => (
+          {displayedData?.map((product: any) => (
             <div
               key={product.id}
               className="flex flex-col cursor-pointer bg-gradient  bg-gradient-to-r  rounded-lg shadow-lg overflow-hidden h-[350px] w-[100%] transform transition duration-300 hover:scale-105 from-secondary via-third to-secondary hover:via-pink-400 hover:to-secondary"
@@ -79,109 +88,22 @@ const ProductMain: React.FC<ProductMainProps> = ({ limit }) => {
                     {product.productName}
                   </span>
                 </div>
-                <p className="text-primary font-semibold text-xs opacity-80 line-clamp-3 overflow-hidden">
+                <p className="text-white font-semibold text-xs opacity-80 line-clamp-3 overflow-hidden">
                   {product.productDescription}
                 </p>
               </div>
             </div>
-          ))} */}
-
-          {displayedData?.map((product: any) => (
-            <motion.div
-              key={product.id}
-              className="relative flex flex-col bg-gradient-to-r from-secondary via-third to-secondary rounded-lg shadow-lg overflow-hidden h-[350px] w-full cursor-pointer"
-              initial="initial"
-              whileHover="hover"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={cardVariants}
-            >
-              <motion.div
-                className="absolute bottom-0 left-0 w-full h-full pointer-events-none"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.1 }}
-                transition={{ duration: 1 }}
-              >
-                <svg
-                  viewBox="0 0 375 283"
-                  fill="none"
-                  className="absolute bottom-0 left-0 w-full h-full"
-                >
-                  <rect
-                    x="159.52"
-                    y="175"
-                    width="152"
-                    height="152"
-                    rx="8"
-                    transform="rotate(-45 159.52 175)"
-                    fill="white"
-                  />
-                  <rect
-                    y="107.48"
-                    width="152"
-                    height="152"
-                    rx="8"
-                    transform="rotate(-45 0 107.48)"
-                    fill="white"
-                  />
-                </svg>
-              </motion.div>
-
-              <div className="relative w-full h-[65%] flex items-center justify-center overflow-hidden">
-                <motion.div
-                  className="w-full h-full"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image
-                    src={product.imageUrl}
-                    alt={product.productName}
-                    width={1000}
-                    height={1000}
-                    className="object-contain w-full h-full"
-                  />
-                </motion.div>
-              </div>
-
-              <div className="px-6 flex-1 flex flex-col h-[35%] space-y-1 mt-4 mb-5">
-                <motion.span
-                  className="text-xs text-white opacity-75 truncate"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {product.tagLine}
-                </motion.span>
-
-                <motion.h3
-                  className="font-extrabold text-md truncate bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  {product.productName}
-                </motion.h3>
-
-                <motion.p
-                  className="text-primary font-medium text-sm opacity-80 line-clamp-3"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  {product.productDescription}
-                </motion.p>
-              </div>
-            </motion.div>
           ))}
         </div>
         {limit && (
           <div className="w-[95%] flex justify-center md:justify-end px-6 md:mt-10">
             <div>
-              <Button
-                text="More Products...."
-                buttonStyle="px-10 md:text-xl  text-md"
-                onClick={() => router.push("/products")}
-              />
+              <Link href="/products">
+                <Button
+                  text="More Products...."
+                  buttonStyle="px-10 md:text-xl text-md"
+                />
+              </Link>
             </div>
           </div>
         )}

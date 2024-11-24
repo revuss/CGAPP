@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
 
   if (!JWT_SECRET) {
     return NextResponse.json(
-      { error: "Server configuration error" },
+      { error: "Server configuration error: JWT_SECRET is not set" },
       { status: 500 }
     );
   }
@@ -43,10 +43,16 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/api/visitors",
+    "/api/visitors/del",
     "/admin/:path*",
+    "/admin/careers",
     "/api/contact",
+    "/api/career/del",
+    "/api/contact/del",
     "/api/career",
     "/api/stats",
+    "/api/visitors",
+    "/api/userdts",
     "/login",
   ],
 };

@@ -112,3 +112,7 @@ export function updateProductAPI(data: {
 export function allProductsAPI(data: any) {
   return postRequest("/products", data);
 }
+
+export function allStatsAPI() {
+  return postRequest("/stats", "");
+}

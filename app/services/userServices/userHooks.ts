@@ -5,15 +5,15 @@ import {
   addCareerAPI,
   addContactAPI,
   getallProductsAPI,
-  userVisit,
+  visitAPI,
 } from "./userServices";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
 export function useVisit() {
   const { mutate } = useMutation({
-    mutationFn: async () => {
-      return await userVisit();
+    mutationFn: async (data: any) => {
+      return await visitAPI(data);
     },
     onError: (err: unknown) => {
       if (err instanceof AxiosError && err.response) {
@@ -25,7 +25,6 @@ export function useVisit() {
   });
   return { mutate };
 }
-
 export function useAddContact() {
   const { mutate } = useMutation({
     mutationFn: async (data: {

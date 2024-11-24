@@ -1,7 +1,9 @@
+import Badges from "../sections/dashboard/Badges";
+
 function page() {
   return (
-    <div className="h-screen border-2 border-black justify-center overflow-visible items-center p-2 rounded-lg-auto ">
-      page
+    <div className="h-screen justify-center overflow-visible items-center p-2 rounded-lg-auto ">
+      <Badges />
     </div>
   );
 }

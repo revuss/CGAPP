@@ -33,14 +33,38 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  useEffect(() => {
-    const visitAlreadyTriggered = sessionStorage.getItem("hasVisited");
+  // useEffect(() => {
+  //   const visitAlreadyTriggered = sessionStorage.getItem("hasVisited");
 
-    if (!visitAlreadyTriggered) {
-      triggerVisit();
-      sessionStorage.setItem("hasVisited", "true");
-    }
+  //   if (!visitAlreadyTriggered) {
+  //     const ipResponse = await fetch("https://api.ipify.org?format=json");
+  //     const { ip } = await ipResponse.json();
+  //     triggerVisit({ ipAddress: ip });
+  //     sessionStorage.setItem("hasVisited", "true");
+  //   }
+  // }, [triggerVisit]);
+
+  useEffect(() => {
+    const fetchIpAndTriggerVisit = async () => {
+      try {
+        const visitAlreadyTriggered = sessionStorage.getItem("hasVisited");
+
+        if (!visitAlreadyTriggered) {
+          const ipResponse = await fetch("https://api.ipify.org?format=json");
+          const { ip } = await ipResponse.json();
+
+          triggerVisit({ ipAddress: ip });
+
+          sessionStorage.setItem("hasVisited", "true");
+        }
+      } catch (error) {
+        console.error("Failed to fetch IP address or trigger visit:", error);
+      }
+    };
+
+    fetchIpAndTriggerVisit();
   }, [triggerVisit]);
+
   return (
     <section className="select-none bg-gray-50">
       <Navbar />

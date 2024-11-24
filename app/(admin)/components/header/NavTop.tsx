@@ -1,13 +1,10 @@
 import { logoutUserAPI } from "@/app/services/adminServices/adminService";
-import { useRouter } from "next/navigation";
 
 const NavTop = () => {
-  const router = useRouter();
-
   const clickLogout = async () => {
     try {
       await logoutUserAPI();
-      router.push("/login");
+      window.location.reload();
     } catch (error) {
       console.error("Error during call:", error);
     }
@@ -19,7 +16,6 @@ const NavTop = () => {
       <p className="cursor-pointer" onClick={clickLogout}>
         Logout
       </p>
-      {/* {isPending && <Appspinner />} */}
     </div>
   );
 };

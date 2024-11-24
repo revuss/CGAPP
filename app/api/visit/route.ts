@@ -11,11 +11,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "skipped" }, { status: 200 });
     }
 
-    // const ipResponse = await axios.get("https://api.ipify.org?format=json");
+    const body = await req.json();
+    const { ipAddress } = body;
+
+    if (!ipAddress) {
+      return NextResponse.json(
+        { message: "IP address is required in the request body" },
+        { status: 400 }
+      );
+    }
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    const ipAddress: any =
-      req.headers.get("x-forwarded-for")?.split(",")[0] ||
-      req.headers.get("remote-addr");
 
     const locationResponse = await axios.get(
       `https://ipapi.co/${ipAddress}/json/`

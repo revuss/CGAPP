@@ -1,3 +1,4 @@
+"use server";
 import ProductMain from "../sections/products/ProductMain";
 
 const page = () => {

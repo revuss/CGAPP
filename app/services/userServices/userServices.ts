@@ -1,11 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getRequest, postRequest } from "../globalServices";
 
-export async function userVisit() {
-  const response = await postRequest("/visit", "");
-  if (response.cookie) {
-    document.cookie = response.cookie;
-  }
-  return response;
+export function visitAPI(data: any) {
+  return postRequest("/visit", data);
 }
 
 export function addContactAPI(data: {

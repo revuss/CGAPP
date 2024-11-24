@@ -11,7 +11,6 @@ const VisitorAction = ({ infoData }: any) => {
         text="Delete"
         buttonStyle="py-1 px-4"
         onClick={() => {
-          console.log(infoData);
           setOpen(true);
         }}
       >

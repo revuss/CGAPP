@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
+  allStatsAPI,
   createProductAPI,
   deleteCareerAPI,
   deleteContactAPI,
@@ -281,4 +282,17 @@ export function useUpdateProduct(fetchDataOptions: any) {
     },
   });
   return { mutate };
+}
+
+export function useGetAllStats() {
+  const { mutate, isPending } = useMutation({
+    mutationFn: async () => {
+      return await allStatsAPI();
+    },
+    onError: (err) => {
+      console.log("error getting admin data ", err);
+    },
+  });
+
+  return { mutate, isPending };
 }
