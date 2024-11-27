@@ -31,10 +31,10 @@ function Navbar() {
         hasShadow ? "shadow-md" : ""
       }`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="w-full flex flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
+          className="flex items-center justify-start space-x-3 rtl:space-x-reverse"
         >
           <Image
             src={logo}
@@ -44,6 +44,9 @@ function Navbar() {
             height={80}
             priority
           />
+          <p className="font-bold bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
+            CytoGenesis
+          </p>
         </Link>
 
         <input type="checkbox" id="menu-toggle" className="hidden peer" />

@@ -34,7 +34,7 @@ export async function POST(request: Request) {
         name,
         phoneNumber,
         isLoggedIn: false,
-        authorized: true,
+        authorized: false,
       },
     });
     return NextResponse.json(

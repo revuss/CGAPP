@@ -46,10 +46,9 @@ function MissVision() {
         <SlideFromRight>
           <div className="cols-span-1 border-8 p-4 rounded-lg border-secondary">
             <p className="md:text-lg xl:tex-xl text-xs font-bold">
-              Our mission is to be the preferred partner in wound care
-              management across PAN India. We are committed to delivering
-              innovative solutions that prevent amputations and improve patient
-              outcomes.
+              We aim to be the partner of choice in wound care management across
+              PAN India. Our commitment is to deliver innovative solutions that
+              prevent amputations and improve patient compliance.
             </p>
           </div>
         </SlideFromRight>
