@@ -17,10 +17,10 @@ function HeroImage() {
 
         <div className="md:text-md xl:text-[14px] text-secondary text-center text-[10px] font-bold mt-3 relative">
           <h2 className="absolute inset-0 text-gray-300 opacity-40 translate-x-1 translate-y-1">
-            Leaders in Advanced Wound Care with Fibroblast-Based Therapies
+            Leaders in advanced wound care with therapies based on Fibroblasts.{" "}
           </h2>
           <h2 className="bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent relative">
-            Leaders in Advanced Wound Care with Fibroblast-Based Therapies
+            Leaders in advanced wound care with therapies based on Fibroblasts.{" "}
           </h2>
         </div>
       </SlideFromRight>

@@ -58,9 +58,9 @@ function MissVision() {
           <div className="cols-span-1 border-8 p-4 rounded-lg border-secondary">
             <p className="md:text-lg xl:tex-xl text-xs font-bold">
               We aim to become the leading marketing company in the nation
-              within the next five years, offering unique and innovative wound
-              care solutions. Our goal is to be the one-stop solution for
-              preventing amputations.
+              within the next year, offering unique and innovative wound care
+              solutions. Our goal is to be the one-stop solution for preventing
+              amputations.
             </p>
           </div>
         </SlideFromLeft>
