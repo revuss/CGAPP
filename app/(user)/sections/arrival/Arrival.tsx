@@ -21,7 +21,7 @@ const Arrival = () => {
         </SlideFromLeft>
       </motion.div>
 
-      <div className="text-xs md:text-lg w-[70%] font-semibold text-secondary items-center justify-center grid grid-cols-1 md:grid-cols-002 text-center gap-2 md:gap-10 md:mx-10">
+      <div className="text-lg md:text-2xl w-[70%] font-bold text-secondary items-center justify-center grid grid-cols-1 md:grid-cols-002 text-center gap-2 md:gap-10 md:mx-10">
         <SlideFromRight>
           <div className="cols-span-1 flex justify-center items-center border-8 p-4 rounded-lg border-secondary">
             <p className="text-center bg-gradient-to-r py-2 from-secondary via-third to-primary bg-clip-text text-transparent">

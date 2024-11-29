@@ -44,8 +44,8 @@ function Navbar() {
             height={80}
             priority
           />
-          <p className="font-bold bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
-            CytoGenesis
+          <p className="font-bold text-xl bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
+            CytoGenesis | Pvt Ltd
           </p>
         </Link>
 

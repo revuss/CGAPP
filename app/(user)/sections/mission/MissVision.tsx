@@ -54,18 +54,25 @@ function MissVision() {
         </SlideFromRight>
       </div>
       <div className="grid md:grid-cols-2 grid-cols-1 gap-5 mx-10 md:my-10 text-center items-center z-10">
+        <div className="cols-span-1 px-4  md:hidden block">
+          <SlideFromRight>
+            <h2 className="text-2xl md:text-3xl xl:text-6xl flex items-center col-span-1 justify-center px-2 lg:text-5xl font-bold bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
+              What We Aim To Achieve
+            </h2>
+          </SlideFromRight>
+        </div>
         <SlideFromLeft>
           <div className="cols-span-1 border-8 p-4 rounded-lg border-secondary">
             <p className="md:text-lg xl:tex-xl text-xs font-bold">
-              We aim to become the leading marketing company in the nation
-              within the next year, offering unique and innovative wound care
-              solutions. Our goal is to be the one-stop solution for preventing
+              We aim to become the leading marketing company in the nation in
+              the upcoming years, offering unique and innovative wound care
+              solutions. Our goal is to be the go-to solution for preventing
               amputations.
             </p>
           </div>
         </SlideFromLeft>
 
-        <div className="cols-span-1 p-4">
+        <div className="cols-span-1 p-4  md:block hidden">
           <SlideFromRight>
             <h2 className="text-2xl md:text-3xl xl:text-6xl flex items-center col-span-1 justify-center px-2 lg:text-5xl font-bold bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
               What We Aim To Achieve
