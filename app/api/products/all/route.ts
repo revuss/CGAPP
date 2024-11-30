@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/lib/prisma";
+
+export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const products = await prisma.products.findMany({
@@ -12,7 +14,12 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json(products);
+    const response = NextResponse.json(products);
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate"
+    );
+    return response;
   } catch (error) {
     console.error("Error fetching products:", error);
     return NextResponse.json(
