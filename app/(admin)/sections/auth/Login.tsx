@@ -10,6 +10,7 @@ import Input from "@/app/global/components/input";
 import Button from "@/app/global/components/button";
 import { useLogin } from "@/app/services/adminServices/adminHooks";
 import { useRouter } from "next/navigation";
+import AppSpinner from "../../components/AppSpinner";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -24,7 +25,7 @@ const Login = () => {
   });
 
   const router = useRouter();
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const onSubmit = (data: LoginFormValues) => {
     mutate(data, {
@@ -40,6 +41,10 @@ const Login = () => {
       },
     });
   };
+
+  if (isPending) {
+    return <AppSpinner />;
+  }
 
   return (
     <form

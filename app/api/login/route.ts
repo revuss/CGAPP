@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const { email, password } = await request.json();
 
   if (!email || !password) {
-    return handleError(error, "All fields are required", 204);
+    return handleError(error, "All fields are required", 200);
   }
 
   const user = await prisma.user.findUnique({
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   }
 
   if (!user.authorized) {
-    return handleError(error, "User is not authorized to log in", 203);
+    return handleError(error, "User is not authorized to log in", 200);
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
