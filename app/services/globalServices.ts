@@ -25,7 +25,7 @@ export async function getRequest(api: string, queryString: string = "") {
     const response = await axios.get(url, {
       withCredentials: true,
       headers: {
-        "Cache-Control": "no-cache",
+        "Cache-Control": "no-store",
         Pragma: "no-cache",
         Expires: "0",
       },
