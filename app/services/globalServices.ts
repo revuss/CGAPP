@@ -21,7 +21,14 @@ export async function getRequest(api: string, queryString: string = "") {
     const url = queryString
       ? `${getBaseUrl()}${api}?${queryString}`
       : `${getBaseUrl()}${api}`;
-    const response = await axios.get(url, { withCredentials: true });
+    const response = await axios.get(url, {
+      withCredentials: true,
+      headers: {
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
     return response.data;
   } catch (err: unknown) {
     const errorDetails = handleError(err);
