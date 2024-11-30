@@ -1,4 +1,4 @@
-"use server";
+export const dynamic = "force-dynamic";
 import ProductMain from "../sections/products/ProductMain";
 
 const page = () => {

@@ -14,8 +14,6 @@ export async function GET() {
       },
     });
 
-    console.log("Fetched products:", products);
-
     const response = NextResponse.json(products, {
       headers: {
         "Cache-Control": "no-store, no-cache, must-revalidate",
