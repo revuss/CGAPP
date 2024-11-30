@@ -18,10 +18,10 @@ function getBaseUrl() {
 
 export async function getRequest(api: string, queryString: string = "") {
   try {
-    const timestamp = new Date().getTime();
     const url = queryString
-      ? `${getBaseUrl()}${api}?${queryString}&_=${timestamp}`
-      : `${getBaseUrl()}${api}?_=${timestamp}`;
+      ? `${getBaseUrl()}${api}?${queryString}`
+      : `${getBaseUrl()}${api}`;
+    console.log("Making GET request to:", url);
     const response = await axios.get(url, {
       withCredentials: true,
       headers: {

@@ -14,11 +14,13 @@ export async function GET() {
       },
     });
 
-    const response = NextResponse.json(products);
-    response.headers.set(
-      "Cache-Control",
-      "no-store, no-cache, must-revalidate"
-    );
+    console.log("Fetched products:", products);
+
+    const response = NextResponse.json(products, {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+      },
+    });
     return response;
   } catch (error) {
     console.error("Error fetching products:", error);
