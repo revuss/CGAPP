@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "title": "PDGF (Platelet-Derived Growth Factor)",
+      "bulletPoints": [
+        "Stimulates fibroblast proliferation and migration.",
+        "Enhances collagen synthesis for stronger tissue regeneration.",
+        "Used in both chronic and acute wound treatments."
+      ]
+    },
+    {
+      "title": "EGF (Epidermal Growth Factor)",
+      "bulletPoints": [
+        "Encourages skin cell growth and repair.",
+        "Reduces scarring by promoting healthy skin regeneration.",
+        "Supports faster wound closure and healing."
+      ]
+    },
+    {
+      "title": "Ionic Silver Solution Stream",
+      "bulletPoints": [
+        "Antimicrobial properties help prevent wound infections.",
+        "Supports fibroblast function for faster healing.",
+        "Ideal for use in both chronic and acute wounds."
+      ]
+    },
+    {
+      "title": "Colloidal Silver Spray",
+      "bulletPoints": [
+        "Effective in killing harmful bacteria at the wound site.",
+        "Supports the natural healing process by boosting fibroblast function.",
+        "Helps in managing both minor and severe wounds."
+      ]
+    }
+  ]
+}

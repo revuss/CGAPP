@@ -12,6 +12,10 @@
     "path": "/products"
   },
   {
+    "name": "Future Plans",
+    "path": "/future"
+  },
+  {
     "name": "Contact",
     "path": "/contact"
   }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import ProductMain from "./sections/products/ProductMain";
 import Arrival from "./sections/arrival/Arrival";
+import FutureMain from "./sections/future/FutureMain";
 
 export const metadata: Metadata = {
   title: "CytoGenesis",
@@ -26,6 +27,7 @@ export default async function Page() {
       <MissVision />
       <About />
       <ProductMain limit={3} />
+      <FutureMain />
       <Choose />
       <Team />
       <Partners />

@@ -78,6 +78,28 @@ export async function POST() {
       visitCount: item._sum.visitCount || 0,
     }));
 
+    // Grouping Career and Contact data by date
+    const [careerData, contactData] = await Promise.all([
+      prisma.career.groupBy({
+        by: ["appliedOn"],
+        _count: { id: true },
+      }),
+      prisma.contact.groupBy({
+        by: ["createdAt"],
+        _count: { id: true },
+      }),
+    ]);
+
+    const careerStats = careerData.map((item) => ({
+      date: item.appliedOn.toISOString().split("T")[0], // Format date
+      count: item._count.id,
+    }));
+
+    const contactStats = contactData.map((item) => ({
+      date: item.createdAt.toISOString().split("T")[0], // Format date
+      count: item._count.id,
+    }));
+
     const response = {
       user: {
         username: user.name,
@@ -92,6 +114,8 @@ export async function POST() {
         { name: "Products Count", value: productsCount },
       ],
       visitorData: visitorStats,
+      careerStats,
+      contactStats,
     };
 
     return NextResponse.json(response, { status: 200 });
