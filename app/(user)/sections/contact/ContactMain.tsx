@@ -33,7 +33,7 @@ function ContactMain() {
               <p>Plot No-59, Sivasadan Building</p>
               <p>Harshavardhan Colony, Old Bowenpally</p>
               <p>Secunderabad, 500011.</p>
-              <p>cytogenesisi2024@gmail.com</p>
+              <p>cytogenesis@gmail.com</p>
               <div className="cursor-pointer">
                 <span>9182765713</span>,&nbsp;<span>8096005601</span>,&nbsp;
                 <span>9742278825</span>

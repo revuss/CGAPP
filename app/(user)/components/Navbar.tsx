@@ -40,8 +40,8 @@ function Navbar() {
             src={logo}
             alt="Logo"
             className="bg-gray-50"
-            width={80}
-            height={80}
+            width={100}
+            height={50}
             priority
           />
           <p className="font-bold text-lg md:text-xl bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
