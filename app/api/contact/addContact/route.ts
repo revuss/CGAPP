@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/app/lib/prisma";
+import { generateEmailTemplate, sendEmail } from "./sendEmail";
 
 export async function POST(request: Request) {
   try {
@@ -31,6 +32,24 @@ export async function POST(request: Request) {
         phoneNumber,
         message,
       },
+    });
+
+    const emailTemplate = generateEmailTemplate({
+      name,
+      email,
+      phoneNumber,
+      message,
+    });
+
+    await sendEmail({
+      to: [
+        "Kpravindran07270@gmail.com",
+        "praveenbudigelli@gmail.com",
+        "santhoshd.kumar@gmail.com",
+        "cytogenesis2024@gmail.com",
+      ],
+      subject: "Contact Form Submission CytoGenesis",
+      template: emailTemplate,
     });
 
     return NextResponse.json(

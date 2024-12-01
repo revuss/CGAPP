@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     if (!ipAddress) {
       return NextResponse.json(
         { message: "IP address is required in the request body" },
-        { status: 400 }
+        { status: 201 }
       );
     }
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     console.error("Error capturing user data:", error);
     return NextResponse.json(
       { message: "error", error: error.message },
-      { status: 500 }
+      { status: 202 }
     );
   }
 }
