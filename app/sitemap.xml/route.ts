@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, "") ||
-    "http://localhost:3000";
+    "https://cytogenesis.in";
   const staticRoutes = ["", "about", "products", "future", "contact"];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
