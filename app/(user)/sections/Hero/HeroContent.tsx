@@ -11,7 +11,7 @@ function HeroContent() {
     }
   };
   return (
-    <div className="col-span-3 px-4 ">
+    <div className="col-span-3 px-4 mt-7">
       <SlideFromLeft>
         <div className="md:text-3xl xl:text-5xl pt-2 text-center tracking-wide md:text-start text-xl font-bold mb-4 relative">
           <h1 className="absolute inset-0 text-gray-400 opacity-40 py-2 translate-x-1 translate-y-1">

@@ -45,7 +45,7 @@ function Navbar() {
             priority
             sizes="(max-width: 1024px) 80px, 100px"
           />
-          <p className="font-bold text-md md:text-xl bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
+          <p className="font-bold text-md md:text-lg xl:text-xl bg-gradient-to-r from-secondary via-third to-primary bg-clip-text text-transparent">
             CytoGenesis | Pvt Ltd
           </p>
         </Link>
@@ -60,12 +60,12 @@ function Navbar() {
           <AlignJustify className="block peer-checked:hidden" />
         </label>
         <div className="hidden w-full md:block md:w-auto">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 ml-10 md:flex-row md:space-x-20 rtl:space-x-reverse md:mt-0">
+          <ul className="font-medium flex flex-col md:p-0 mt-4 md:flex-row md:gap-x-4 lg:gap-x-10 rtl:space-x-reverse md:mt-0">
             {routes.map((route, index) => (
               <li key={index}>
                 <Link
                   href={route.path}
-                  className={`block py-2 px-3 uppercase tracking-wider md:hover:text-secondary md:p-0 font-semibold ${
+                  className={`block py-2 px-3 text-xs lg:text-[15px] uppercase tracking-wider md:hover:text-secondary md:p-0 font-semibold ${
                     pathname === route.path
                       ? "text-secondary font-bold"
                       : "text-primary"
